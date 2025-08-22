@@ -50,8 +50,8 @@ vim.g.maplocalleader = "\\"
 require("lazy").setup({
     spec = {
         -- import your plugins
-        -- { import = "plugins" },
-        { "rebelot/kanagawa.nvim" },
+        { import = "plugins" },
+        -- { "rebelot/kanagawa.nvim" },
     },
     -- Configure any other settings here. See the documentation for more details.
     -- colorscheme that will be used when installing plugins.
