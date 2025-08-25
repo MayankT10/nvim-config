@@ -27,6 +27,7 @@ require("lazy").setup({
         -- import your plugins
         --{ import = "plugins" },
         { "rebelot/kanagawa.nvim" },
+        { 'ThePrimeagen/vim-be-good' },
         -- For now this functin isn't working ( some luarocks error , couldn't be fixed after downloading luarocks ) 
         -- This function helps to fix the racing issue ( running in parallel )
         -- Basically it will first download the plugins and then run it 
