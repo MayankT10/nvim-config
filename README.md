@@ -1,3 +1,3 @@
-Map Leader = space 
-Map Local Leader = \\
+Map Leader = space \
+Map Local Leader = \\ \
 
