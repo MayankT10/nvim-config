@@ -15,26 +15,52 @@ if not (vim.uv or vim.loop).fs_stat(lazypath) then
 end
 vim.opt.rtp:prepend(lazypath)
 
--- Make sure to setup `mapleader` and `maplocalleader` before
--- loading lazy.nvim so that mappings are correct.
--- This is also a good place to setup other settings (vim.opt)
-vim.g.mapleader = " "
-vim.g.maplocalleader = "\\"
-
 -- Setup lazy.nvim
 require("lazy").setup({
     spec = {
         {
-            'rebelot/kanagawa.nvim', 
+            "rebelot/kanagawa.nvim",
+            opts = {
+                transparent = true,
+                styles = {
+                    sidebars = "transparent",
+                    floats = "transparent",
+                },
+            },
             lazy = false,
             priority = 1000,
-            config = function()
-                pcall(function()
-                    vim.cmd("colorscheme kanagawa-wave")
-                end)
+            config = function(_, opts)
+                require("kanagawa").setup(opts)
+                vim.cmd("colorscheme kanagawa-wave")
+
+                -- -- Extra transparency tweaks
+                vim.cmd([[
+                hi Normal guibg=NONE ctermbg=NONE
+                hi NormalNC guibg=NONE ctermbg=NONE
+                hi NormalFloat guibg=NONE ctermbg=NONE
+                hi FloatBorder guibg=NONE ctermbg=NONE
+                hi SignColumn guibg=NONE ctermbg=NONE
+                hi VertSplit guibg=NONE ctermbg=NONE
+                hi StatusLine guibg=NONE ctermbg=NONE
+                hi StatusLineNC guibg=NONE ctermbg=NONE
+                hi LineNr guibg=NONE ctermbg=NONE
+                hi EndOfBuffer guibg=NONE ctermbg=NONE
+                ]])
             end,
         },
-        { 'ThePrimeagen/vim-be-good' },
+        {
+            "numToStr/Comment.nvim",
+            config = function()
+                require("Comment").setup()
+            end
+        },
+        {
+            "akinsho/toggleterm.nvim",
+            version = "*",
+            config = function()
+                require("toggleterm").setup()
+            end
+        },
         { 
             "nvim-treesitter/nvim-treesitter",
             build = ":TSUpdate",
@@ -48,12 +74,29 @@ require("lazy").setup({
                         "query",
                         "markdown",
                         "markdown_inline",
+                        "java",
+                        "python",
                     },
                     auto_install = true,
-                    highlight = { enable = true },
+                    highlight = { 
+                        enable = true 
+                    },
+
+                    incremental_selection = {
+                        enable = true,
+                        keymaps = {
+                            init_selection = "<Leader>ss", 
+                            node_incremental = "<Leader>si",
+                            scope_incremental = "<Leader>sc",
+                            node_decremental = "<Leader>sd",
+                        },
+                    },
                 })
             end,
         },
+        {
+            "nvim-treesitter/nvim-treesitter-textobjects",
+        }
     },
     install = { colorscheme = { "kanagawa-wave" } } ,
     checker = { enabled = true },
