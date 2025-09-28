@@ -10,10 +10,10 @@ vim.keymap.set("n", "<leader>/", "<cmd>lua require('Comment.api').toggle.linewis
 vim.keymap.set("v", "<leader>/", "<ESC><cmd>lua require('Comment.api').toggle.linewise(vim.fn.visualmode())<CR>", opts)
 
 -- Moving Windows
-vim.keymap.set("n","<C-h>","<C-w>h", {remap =true})
-vim.keymap.set("n","<C-j>","<C-w>j", {remap =true})
-vim.keymap.set("n","<C-k>","<C-w>k", {remap =true})
-vim.keymap.set("n","<C-l>","<C-w>l", {remap =true})
+vim.keymap.set("n","<C-h>","<C-w>h", opts)
+vim.keymap.set("n","<C-j>","<C-w>j", opts)
+vim.keymap.set("n","<C-k>","<C-w>k", opts)
+vim.keymap.set("n","<C-l>","<C-w>l", opts)
 
 -- Resizing Windows
 vim.keymap.set("n","<C-Up>", ":resize -2<CR>",opts)
@@ -30,7 +30,7 @@ vim.keymap.set("n","<leader>wd","<C-W>c", {remap = true })
 vim.keymap.set("n","<C-t>", ":tabnew<CR>",opts)
 vim.keymap.set("n","<C-x>", ":tabclose<CR>",opts)
 vim.keymap.set("n","<leader>x", ":bd<CR>",opts) -- close the current buffer
-vim.keymap.set("n","<C-h>", ":tabprevious<CR>",opts)
+vim.keymap.set("n","<C-p>", ":tabprevious<CR>",opts)
 vim.keymap.set("n","<C-n>", ":tabnext<CR>",opts)
 
 -- Floating terminal
