@@ -1,7 +1,6 @@
 local opts = { noremap = true, silent = true }
 vim.g.mapleader = " "
 
-vim.keymap.set("n", "<leader>Q", vim.cmd.q)
 -- Files keymaps
 vim.keymap.set("n", "<leader>p", vim.cmd.Ex)
 vim.keymap.set("n", "<leader>w", vim.cmd.w)

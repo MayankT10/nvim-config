@@ -1,4 +1,4 @@
 require("mayank.keymaps")
 require("mayank.options")
-require("mayank.plugins")
+require("mayank.lazy")
 require("mayank.colorscheme")

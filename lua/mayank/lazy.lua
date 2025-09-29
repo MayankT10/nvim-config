@@ -15,20 +15,4 @@ if not (vim.uv or vim.loop).fs_stat(lazypath) then
 end
 vim.opt.rtp:prepend(lazypath)
 
-local plugins = {
-    require("mayank.plugins.kanagawa"),
-    require("mayank.plugins.comment"),
-    require("mayank.plugins.toggleterm"),
-    require("mayank.plugins.treesitter"),
-    require("mayank.plugins.treesitter-objects"),
-}
--- Setup lazy.nvim
-require("lazy").setup({
-    spec = plugins,
-    install = { colorscheme = { "kanagawa-wave" } } ,
-    checker = { enabled = true },
-    defaults = {lazy = false },
-})
-
-
-
+require("lazy").setup("mayank.plugins")
