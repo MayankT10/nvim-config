@@ -35,7 +35,7 @@ vim.keymap.set("n","<C-n>", ":tabnext<CR>",opts)
 
 -- Floating terminal
 vim.keymap.set("n", "<leader>tf", "<cmd>ToggleTerm direction=float<CR>", { desc = "Toggle floating terminal" })
-vim.keymap.set("n", "<C-'>", '<cmd>execute v:count . "ToggleTerm"<CR>')
+vim.keymap.set("n", "<C-`>", '<cmd>execute v:count . "ToggleTerm"<CR>')
 -- Exit terminal mode
 vim.keymap.set("t", "<Esc>", [[<C-\><C-n>]],opts)
 
