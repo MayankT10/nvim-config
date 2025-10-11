@@ -1,6 +1,9 @@
 local opts = { noremap = true, silent = true }
 vim.g.mapleader = " "
 
+-- Code Run
+-- vim.keymap.set("n", "<leader>r", "!run-rust.sh %<CR>", { desc = "Cargo run" })
+
 -- Files keymaps
 vim.keymap.set("n", "<leader>p", vim.cmd.Ex)
 vim.keymap.set("n", "<leader>w", vim.cmd.w)
@@ -34,7 +37,7 @@ vim.keymap.set("n","<C-p>", ":tabprevious<CR>",opts)
 vim.keymap.set("n","<C-n>", ":tabnext<CR>",opts)
 
 -- Floating terminal
-vim.keymap.set("n", "<leader>tf", "<cmd>ToggleTerm direction=float<CR>", { desc = "Toggle floating terminal" })
+vim.keymap.set("n", "<leader>t", "<cmd>ToggleTerm direction=float<CR>", { desc = "Toggle floating terminal" })
 vim.keymap.set("n", "<C-`>", '<cmd>execute v:count . "ToggleTerm"<CR>')
 -- Exit terminal mode
 vim.keymap.set("t", "<Esc>", [[<C-\><C-n>]],opts)
