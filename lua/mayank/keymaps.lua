@@ -15,6 +15,9 @@ vim.keymap.set("n", "<leader>m", function()
 	require("conform").format({ async = true, lsp_fallback = true })
 end, { desc = "Format file (conform)" })
 
+-- Nvim tree
+vim.keymap.set("n", "<leader>e", ":NvimtreeToggle<CR>", opts)
+
 -- Files keymaps
 vim.keymap.set("n", "<leader>p", vim.cmd.Ex)
 vim.keymap.set("n", "<leader>w", vim.cmd.w)
@@ -52,3 +55,10 @@ vim.keymap.set("n", "<leader>t", "<cmd>ToggleTerm direction=float<CR>", { desc =
 vim.keymap.set("n", "<C-`>", '<cmd>execute v:count . "ToggleTerm"<CR>')
 -- Exit terminal mode
 vim.keymap.set("t", "<Esc>", [[<C-\><C-n>]], opts)
+
+-- Competitest keymaps
+vim.keymap.set("n", "<F2>", "<cmd>CompetiTest add_testcase<CR>", { desc = "Add Testcases" })
+vim.keymap.set("n", "<F3>", "<cmd>CompetiTest edit_testcase<CR>", { desc = "Edit Testcases" })
+vim.keymap.set("n", "<F4>", "<cmd>CompetiTest delete_testcase<CR>", { desc = "Delete Testcases" })
+vim.keymap.set("n", "<F5>", "<cmd>CompetiTest run<CR>", { desc = "Compile and Run" })
+vim.keymap.set("n", "<F6>", "<cmd>CompetiTest run_no_compile<CR>", { desc = "Run without Compiling" })
