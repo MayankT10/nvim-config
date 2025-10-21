@@ -15,11 +15,53 @@ vim.keymap.set("n", "<leader>m", function()
 	require("conform").format({ async = true, lsp_fallback = true })
 end, { desc = "Format file (conform)" })
 
+-- Format C++ files using clangd
+vim.keymap.set("n", "<leader>f", function()
+  vim.lsp.buf.format({ async = true })
+end, { desc = "Format file" })
+
+-- Autoformat before save (only for C/C++)
+-- vim.api.nvim_create_autocmd("BufWritePre", {
+--   pattern = { "*.cpp", "*.cc", "*.c", "*.h", "*.hpp" },
+--   callback = function()
+--     vim.lsp.buf.format({ async = false })
+--   end,
+-- })
+--
+--
+-- vim.keymap.set("n", "<leader>l", function()
+--     vim.diagnostic.open_float(0, {
+--         scope = "line",             -- show diagnostics for current line only
+--         border = "rounded",         -- rounded border
+--         focusable = false,          -- float does not steal focus
+--         max_width = 80,             -- wrap long lines
+--         style = "minimal",          -- remove extra window decorations
+--         winhighlight = "NormalFloat:Normal,FloatBorder:Normal" -- transparent look
+--     })
+-- end, { desc = "Show Diagnostics (Transparent Float)" })
+
+-- Auto-start clangd for C/C++ files
+vim.api.nvim_create_autocmd("FileType", {
+  pattern = { "c", "cpp", "h", "hpp" },
+  callback = function()
+    local server = vim.lsp.config["clangd"]
+    if server then
+      vim.lsp.start(server)
+    end
+  end,
+})
+-- vim.keymap.set("n", "<leader>M", "VGgg=")
+
+-- clipboard
+vim.keymap.set({ "v" }, "<C-C>", '"+y', { desc = "Copy to system clipboard" })
+vim.keymap.set({ "v" }, "<C-y>", '"+y', { desc = "Copy to system clipboard" })
+
 -- Nvim tree
 vim.keymap.set("n", "<leader>e", ":NvimtreeToggle<CR>", opts)
 
 -- Files keymaps
-vim.keymap.set("n", "<leader>p", vim.cmd.Ex)
+-- vim.keymap.set("n", "<leader>p", vim.cmd.Ex)
+vim.keymap.set("n", "<leader>p", "<cmd>Oil<CR>")
 vim.keymap.set("n", "<leader>w", vim.cmd.w)
 
 -- Comment Toggle
