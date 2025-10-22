@@ -10,6 +10,15 @@ vim.g.mapleader = " "
 --     vim.lsp.buf.format({ async = true })
 -- end, { desc = 'Format with LSP' })
 
+-- Code runner
+vim.keymap.set('n', '<leader>rr', ':RunCode<CR>', { noremap = true, silent = false })
+vim.keymap.set('n', '<leader>rf', ':RunFile<CR>', { noremap = true, silent = false })
+vim.keymap.set('n', '<leader>rft', ':RunFile tab<CR>', { noremap = true, silent = false })
+vim.keymap.set('n', '<leader>rp', ':RunProject<CR>', { noremap = true, silent = false })
+vim.keymap.set('n', '<leader>rc', ':RunClose<CR>', { noremap = true, silent = false })
+vim.keymap.set('n', '<leader>crf', ':CRFiletype<CR>', { noremap = true, silent = false })
+vim.keymap.set('n', '<leader>crp', ':CRProjects<CR>', { noremap = true, silent = false })
+
 -- conform powered formatting
 vim.keymap.set("n", "<leader>m", function()
 	require("conform").format({ async = true, lsp_fallback = true })
