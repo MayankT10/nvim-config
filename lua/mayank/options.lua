@@ -5,6 +5,9 @@ vim.o.autoread = true
 vim.opt.splitbelow = true
 vim.opt.splitright = true
 
+vim.opt.cmdheight = 0
+-- vim.opt.laststatus = 3
+
 vim.opt.wrap = true
 
 vim.o.signcolumn = "yes"
@@ -17,20 +20,20 @@ vim.opt.shiftwidth = 4
 vim.opt.clipboard = "unnamedplus"
 
 vim.opt.scrolloff = 999
--- Dynamic scrolloff for insert mode
-vim.api.nvim_create_autocmd({"InsertEnter"}, {
-    pattern = "*",
-    callback = function()
-        vim.o.scrolloff = 12  -- more space while writing
-    end,
-})
-
-vim.api.nvim_create_autocmd({"InsertLeave"}, {
-    pattern = "*",
-    callback = function()
-        vim.o.scrolloff = 8   -- reset when leaving insert mode
-    end,
-})
+-- -- Dynamic scrolloff for insert mode
+-- vim.api.nvim_create_autocmd({"InsertEnter"}, {
+--     pattern = "*",
+--     callback = function()
+--         vim.o.scrolloff = 12  -- more space while writing
+--     end,
+-- })
+--
+-- vim.api.nvim_create_autocmd({"InsertLeave"}, {
+--     pattern = "*",
+--     callback = function()
+--         vim.o.scrolloff = 8   -- reset when leaving insert mode
+--     end,
+-- })
 
 vim.opt.virtualedit = "block"
 

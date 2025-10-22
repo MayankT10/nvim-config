@@ -113,6 +113,13 @@ vim.lsp.config["emmet_ls"] = {
 	filetypes = { "html", "javascriptreact", "typescriptreact" },
 }
 
+-- for name, config in pairs(vim.lsp.config) do
+-- 	vim.lsp.start(config)
+-- end
+
 for name, config in pairs(vim.lsp.config) do
-	vim.lsp.start(config)
+  if config.cmd ~= nil then
+    vim.lsp.start(config)
+  else
+  end
 end
