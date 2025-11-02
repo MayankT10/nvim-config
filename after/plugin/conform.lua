@@ -1,30 +1,91 @@
-require("conform").setup({
-  formatters_by_ft = {
-    lua = { "stylua" },
-    python = { "isort", "black" },
-    rust = { "rustfmt", lsp_format = "fallback" },
-    javascript = { "prettierd", "prettier", stop_after_first = true },
-    c = { "clang_format" },
-    cpp = { "clang_format" },
-  },
+-- require("conform").setup({
+--   formatters_by_ft = {
+--     lua = { "stylua" },
+--     python = { "isort", "black" },
+--     rust = { "rustfmt", lsp_format = "fallback" },
+--     javascript = { "prettierd", "prettier", stop_after_first = true },
+--     c = { "clang_format" },
+--     cpp = { "clang_format" },
+--   },
+--
+--   formatters = {
+--     clang_format = {
+--       prepend_args = { "-style={IndentWidth: 4, UseTab: Never}" },
+--     },
+--     stylua = {
+--       prepend_args = { "--indent-type", "Spaces", "--indent-width", "4" },
+--     },
+--     prettier = {
+--       prepend_args = { "--tab-width", "4", "--use-tabs", "false" },
+--     },
+--     prettierd = {
+--       prepend_args = { "--tab-width", "4", "--use-tabs", "false" },
+--     },
+--   },
+-- })
+--
 
-  formatters = {
-    clang_format = {
-      prepend_args = { "-style={IndentWidth: 4, UseTab: Never}" },
+require("conform").setup({
+    formatters_by_ft = {
+        lua = { "stylua" },
+        python = { "isort", "black" },
+        rust = { "rustfmt", lsp_format = "fallback" },
+        javascript = { "prettierd", "prettier", stop_after_first = true },
+        javascriptreact = { "prettierd", "prettier", stop_after_first = true },
+        typescript = { "prettierd", "prettier", stop_after_first = true },
+        typescriptreact = { "prettierd", "prettier", stop_after_first = true },
+        html = { "prettierd", "prettier", stop_after_first = true },
+        css = { "prettierd", "prettier", stop_after_first = true },
+        json = { "prettierd", "prettier", stop_after_first = true },
+        c = { "clang_format" },
+        cpp = { "clang_format" },
+        java = { "google-java-format", lsp_format = "fallback" },
     },
-    stylua = {
-      prepend_args = { "--indent-type", "Spaces", "--indent-width", "4" },
+
+    formatters = {
+        clang_format = {
+            prepend_args = { "-style={IndentWidth: 4, UseTab: Never}" },
+        },
+        stylua = {
+            prepend_args = { "--indent-type", "Spaces", "--indent-width", "4" },
+        },
+        prettier = {
+            prepend_args = { "--tab-width", "4", "--use-tabs", "false" },
+        },
+        prettierd = {
+            prepend_args = { "--tab-width", "4", "--use-tabs", "false" },
+        },
+        ["google-java-format"] = {
+            prepend_args = { "--aosp" }, -- optional, use "--aosp" for Android style or remove for Google default
+        },
     },
-    prettier = {
-      prepend_args = { "--tab-width", "4", "--use-tabs", "false" },
-    },
-    prettierd = {
-      prepend_args = { "--tab-width", "4", "--use-tabs", "false" },
-    },
-  },
 })
 
+-- Keymap: Manual formatting
+-- vim.keymap.set({ "n", "v" }, "<leader>f", function()
+--   require("conform").format({ async = true })
+-- end, { desc = "Format code" })
 
+-- -- Auto-format on save
+-- vim.api.nvim_create_autocmd("BufWritePre", {
+--   pattern = {
+--     "*.lua",
+--     "*.py",
+--     "*.rs",
+--     "*.js",
+--     "*.jsx",
+--     "*.ts",
+--     "*.tsx",
+--     "*.html",
+--     "*.css",
+--     "*.json",
+--     "*.c",
+--     "*.cpp",
+--   },
+--   callback = function(args)
+--     require("conform").format({ bufnr = args.buf })
+--   end,
+-- })
 -- require("conform").setup({
 --     -- Map of filetype to formatters
 --     formatters_by_ft = {

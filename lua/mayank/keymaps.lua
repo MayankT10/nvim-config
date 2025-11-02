@@ -24,10 +24,14 @@ vim.keymap.set("n", "<leader>m", function()
 	require("conform").format({ async = true, lsp_fallback = true })
 end, { desc = "Format file (conform)" })
 
+vim.keymap.set("n", "<leader>j", function()
+	require("conform").format({ async = true, lsp_fallback = true })
+end, { desc = "Format file (conform)" })
+
 -- Format C++ files using clangd
-vim.keymap.set("n", "<leader>f", function()
-  vim.lsp.buf.format({ async = true })
-end, { desc = "Format file" })
+-- vim.keymap.set("n", "<leader>f", function()
+--   vim.lsp.buf.format({ async = true })
+-- end, { desc = "Format file" })
 
 -- Autoformat before save (only for C/C++)
 -- vim.api.nvim_create_autocmd("BufWritePre", {
