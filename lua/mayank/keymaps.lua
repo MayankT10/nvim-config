@@ -53,6 +53,14 @@ end, { desc = "Format file (conform)" })
 --     })
 -- end, { desc = "Show Diagnostics (Transparent Float)" })
 
+-- Competitest
+vim.keymap.set("n", "<leader>ce", function()
+  require("competitest").view_stderr()
+end, { desc = "View Competitest stderr output" })
+
+vim.keymap.set("n", "<leader>co", "<cmd>CompetiTestShowOutput<CR>", { desc = "Show last output" })
+
+
 -- Auto-start clangd for C/C++ files
 vim.api.nvim_create_autocmd("FileType", {
   pattern = { "c", "cpp", "h", "hpp" },
